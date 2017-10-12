@@ -22,7 +22,7 @@ import cucumber.api.java.es.Entonces;
 
 public class LoginStepDefinitions {
 	private static final String ID = "23";
-	private static final String DEFAULT_BASE_URL = "http://localhost:5000";
+	private static final String DEFAULT_BASE_URL = "http://localhost:8000";
 	private WebDriver driver;
 	private LoginPageObject loginPage;
 	private String currentMessage;
@@ -31,7 +31,7 @@ public class LoginStepDefinitions {
 
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "C:\\ChromeDriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(DEFAULT_BASE_URL);
