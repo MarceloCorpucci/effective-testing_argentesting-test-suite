@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePageObject {
 	private WebDriver driver;
+	private HeaderSection header;
 	
 	public HomePageObject(WebDriver driver) {
 		this.driver = driver;
@@ -16,6 +17,11 @@ public class HomePageObject {
 		return new EntryPageObject(driver);
 	}
 
+	public EntryListPageObject openEntryList() {
+		header = new HeaderSection(driver);
+		return header.goToBlog();
+	}
+	
 	public String getStatusMessage() {
 		return driver.findElement(By.xpath("//*[@id=\"notification\"]/span")).getText();
 	}
