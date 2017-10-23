@@ -1,4 +1,5 @@
 #language: es
+@regresion @crearEntrada
 Característica: Crear entradas
 
 	Antecedentes: Datos para crear una entrada en el blog

@@ -1,4 +1,5 @@
 #language: es
+@regresion @publicarEntrada
 Característica: Publicar entradas
 
 	Escenario: Usuario publica una entrada suya en Draf

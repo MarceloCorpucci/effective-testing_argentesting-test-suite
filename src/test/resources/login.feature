@@ -1,4 +1,5 @@
 #language: es
+@regresion @login
 Característica: Login
 
 	Escenario: Usuario registrado realiza login con éxito

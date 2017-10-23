@@ -35,7 +35,7 @@ public class PublishEntryStepDefinitions {
 		this.pass = "userx";
 		
 		GlueCodeHelper.createUser("Juan", email, pass);
-		GlueCodeHelper.createEntry(title, "this is a test.", "Draft", "Test");
+		GlueCodeHelper.createEntry(title, "this is another test.", "Draft", "Test");
 	}
 
 	@Cuando("^hace una publicacion$")
@@ -53,8 +53,7 @@ public class PublishEntryStepDefinitions {
 	
 	@Entonces("^se muestra el mensaje \"([^\"]*)\"$")
 	public void se_muestra_el_mensaje(String expectedMessage) throws Throwable {
-	    String a = entryPage.getResultMessage();
-		assertTrue(a.equals(expectedMessage));
+		assertTrue(entryPage.getResultMessage().equals(expectedMessage));
 	}
 
 	@Entonces("^la entrada se suma a la lista de entradas del blog\\.$")
@@ -66,10 +65,11 @@ public class PublishEntryStepDefinitions {
 		assertTrue(entryListPage.getEntries().contains(this.title));
 	}
 
-	@After("@wip")
+	@After("@publicarEntrada")
 	public void tearDown() throws JsonParseException, JsonMappingException, IOException {
 		baseStep.getDriver().quit();
-		GlueCodeHelper.deleteDefaultTag();
+		GlueCodeHelper.deleteUser();
+		GlueCodeHelper.deleteEntry(this.title);
 	}
 
 }

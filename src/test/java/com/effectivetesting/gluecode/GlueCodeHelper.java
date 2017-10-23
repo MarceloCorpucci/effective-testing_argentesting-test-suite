@@ -38,6 +38,10 @@ public class GlueCodeHelper {
 		post(GlueCodeHelper.DEFAULT_BASE_URL + "/api/user", body(jsonInString, "application/json"));
 	}
 	
+	public static void deleteUser() {
+		delete(GlueCodeHelper.DEFAULT_BASE_URL + "/api/user/" + GlueCodeHelper.USER_ID);
+	}
+	
 	public static void createEntry(String title, String body, String status, String aTag) throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		
@@ -66,15 +70,18 @@ public class GlueCodeHelper {
         Entry entry = mapper.readValue(response.asText(), Entry.class);
         
         for (int index = 0; index < entry.getObjects().size(); index++) {
+        	
         	if (entry.getObjects().get(index).getTitle().equals(title)) {
+        		
+        		if (entry.getObjects().get(index).getTags().size() > 0) {
+        			delete(GlueCodeHelper.DEFAULT_BASE_URL + "/api/tag/" + entry.getObjects().get(index).getTags().get(0).getId());
+        		}
+
         		delete(GlueCodeHelper.DEFAULT_BASE_URL + "/api/entry/" + entry.getObjects().get(index).getId());
         	}
+        	
         }
         
-	}
-
-	public static void deleteDefaultTag() throws JsonParseException, JsonMappingException, IOException {
-		delete(GlueCodeHelper.DEFAULT_BASE_URL + "/api/tag/" + TAG_ID);
 	}
 	
 	private static Tag createTag(String aTag) throws IOException {

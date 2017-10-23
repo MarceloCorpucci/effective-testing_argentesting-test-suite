@@ -1,14 +1,11 @@
 package com.effectivetesting.gluecode;
 
-import static com.github.restdriver.serverdriver.RestServerDriver.delete;
-
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.stereotype.Component;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
 @Component
@@ -42,18 +39,12 @@ public class BaseStepDefinitions {
 		this.driver = driver;
 	}
 
-	@Before
+	@Before("@regresion")
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver", "/opt/chromedriver/chromedriver");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(GlueCodeHelper.DEFAULT_BASE_URL);
 	}
-	
-	@After
-	public void tearDown() {
-		driver.quit();
-		delete(GlueCodeHelper.DEFAULT_BASE_URL + "/api/user/" + GlueCodeHelper.USER_ID);
-	}	
 
 }

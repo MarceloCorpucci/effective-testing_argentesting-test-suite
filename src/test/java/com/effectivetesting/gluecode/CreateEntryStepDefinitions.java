@@ -68,9 +68,10 @@ public class CreateEntryStepDefinitions {
 		assertFalse(currentEntries.contains(this.title));
 	}
 	
-	@After()
+	@After("@crearEntrada")
 	public void tearDown() throws JsonParseException, JsonMappingException, IOException {
 		baseStep.getDriver().quit();
+		GlueCodeHelper.deleteUser();
 		GlueCodeHelper.deleteEntry(this.title);
 	}
 }

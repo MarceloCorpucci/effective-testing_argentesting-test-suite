@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.effectivetesting.pageobject.LoginPageObject;
 
+import cucumber.api.java.After;
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.es.Entonces;
@@ -38,4 +39,9 @@ public class LoginStepDefinitions {
 		Assert.assertEquals(expectedMessage, currentMessage);
 	}
 	
+	@After("@login")
+	public void tearDown() {
+		baseStep.getDriver().quit();
+		GlueCodeHelper.deleteUser();
+	}	
 }
