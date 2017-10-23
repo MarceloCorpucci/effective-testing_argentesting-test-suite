@@ -1,14 +1,9 @@
 package com.effectivetesting.gluecode;
 
-import static com.github.restdriver.serverdriver.RestServerDriver.body;
-import static com.github.restdriver.serverdriver.RestServerDriver.post;
-
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.effectivetesting.entities.User;
 import com.effectivetesting.pageobject.LoginPageObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cucumber.api.java.es.Cuando;
 import cucumber.api.java.es.Dado;
@@ -27,12 +22,7 @@ public class LoginStepDefinitions {
 		baseStep.setEmail(email);
 		baseStep.setPassword(password);
         
-		User user = GlueCodeHelper.createUser(userName, email, password);
-		ObjectMapper mapper = new ObjectMapper();
-		
-		String jsonInString = mapper.writeValueAsString(user);
-		
-		post(GlueCodeHelper.DEFAULT_BASE_URL + "/api/user", body(jsonInString, "application/json"));
+		GlueCodeHelper.createUser(userName, email, password);
 	}
 
 	@Cuando("^se loguea en el blog$")

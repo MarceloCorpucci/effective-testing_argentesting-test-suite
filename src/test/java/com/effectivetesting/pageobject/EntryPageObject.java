@@ -46,6 +46,16 @@ public class EntryPageObject {
 		return this;
 	}
 	
+	public EntryPageObject editEntry() {
+		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/li[2]/a")).click();
+		return this;
+	}
+	
+	public String getResultMessage() {
+		return driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[1]/div/span")).getText();
+	}
+
+	
 	public EntryListPageObject openEntryList() {
 		header = new HeaderSection(driver);
 		return header.goToBlog();

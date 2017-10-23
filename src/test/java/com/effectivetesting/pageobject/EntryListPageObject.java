@@ -15,4 +15,14 @@ public class EntryListPageObject {
 		return driver.findElement(By.xpath("//*[@id=\"content_title\"]")).getText();
 	}
 
+	public EntryListPageObject searchEntry(String entry) {
+		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/form/div/input")).sendKeys(entry);
+		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/form/div/span/button")).click();
+		return this;
+	}
+	
+	public EntryPageObject selectEntry(String entry) throws InterruptedException { 
+		driver.findElement(By.xpath("//*[@id=\"content_title\"]/div/p/a")).click();
+		return new EntryPageObject(driver);
+	}
 }

@@ -69,7 +69,7 @@ public class CreateEntryStepDefinitions {
 	}
 	
 	@After()
-	public void wipTearDown() throws JsonParseException, JsonMappingException, IOException {
+	public void tearDown() throws JsonParseException, JsonMappingException, IOException {
 		baseStep.getDriver().quit();
 		GlueCodeHelper.deleteEntry(this.title);
 	}
