@@ -1,5 +1,5 @@
 #language: es
-@regresion @publicarEntrada @wip
+@regresion @publicarEntrada
 Característica: Publicar entradas
 
 	Escenario: Usuario publica una entrada suya en Draft
