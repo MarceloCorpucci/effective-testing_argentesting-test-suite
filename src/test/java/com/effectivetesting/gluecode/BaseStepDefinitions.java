@@ -56,7 +56,7 @@ public class BaseStepDefinitions {
 //		                    );
 //		driver = new PhantomJSDriver(caps);
 		
-		driver.manage().window().maximize();
+//		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(GlueCodeHelper.DEFAULT_BASE_URL);
 	}
