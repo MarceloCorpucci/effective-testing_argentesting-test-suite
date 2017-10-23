@@ -16,6 +16,11 @@ public class HeaderSection {
 		return new EntryListPageObject(driver);
 	}
 	
+	public TagListPageObject goToTags() {
+		driver.findElement(By.id("tag")).click();
+		return new TagListPageObject(driver);
+	}
+	
 	public HomePageObject logOut() {
 		driver.findElement(By.id("logout")).click();
 		return new HomePageObject(driver);		

@@ -22,6 +22,11 @@ public class HomePageObject {
 		return header.goToBlog();
 	}
 	
+	public TagListPageObject openTagList() {
+		header = new HeaderSection(driver);
+		return header.goToTags();	
+	}
+	
 	public String getStatusMessage() {
 		return driver.findElement(By.xpath("//*[@id=\"notification\"]/span")).getText();
 	}
