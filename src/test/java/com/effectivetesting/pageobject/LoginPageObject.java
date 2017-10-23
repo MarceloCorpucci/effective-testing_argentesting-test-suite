@@ -11,10 +11,10 @@ public class LoginPageObject {
 	}
 	
 	public HomePageObject login(String email, String pass) {
-		driver.findElement(By.id("login")).click();
-		driver.findElement(By.id("email")).sendKeys(email);
-		driver.findElement(By.id("password")).sendKeys(pass);
-		driver.findElement(By.id("btn-submit")).click();
+		driver.findElement(By.cssSelector("#login > a")).click();
+		driver.findElement(By.cssSelector("#email")).sendKeys(email);
+		driver.findElement(By.cssSelector("#password")).sendKeys(pass);
+		driver.findElement(By.cssSelector("#btn-submit")).click();
 		
 		return new HomePageObject(driver);
 	}

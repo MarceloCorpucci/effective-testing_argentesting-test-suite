@@ -12,17 +12,17 @@ public class HeaderSection {
 	}
 	
 	public EntryListPageObject goToBlog() {
-		driver.findElement(By.id("blog")).click();
+		driver.findElement(By.cssSelector("#blog")).click();
 		return new EntryListPageObject(driver);
 	}
 	
 	public TagListPageObject goToTags() {
-		driver.findElement(By.id("tag")).click();
+		driver.findElement(By.cssSelector("#tag")).click();
 		return new TagListPageObject(driver);
 	}
 	
 	public HomePageObject logOut() {
-		driver.findElement(By.id("logout")).click();
+		driver.findElement(By.cssSelector("#logout")).click();
 		return new HomePageObject(driver);		
 	}
 }

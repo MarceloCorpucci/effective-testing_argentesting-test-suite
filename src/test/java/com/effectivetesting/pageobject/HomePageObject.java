@@ -12,7 +12,7 @@ public class HomePageObject {
 	}
 
 	public EntryPageObject goToCreateEntry() {
-		driver.findElement(By.id("create_post")).click();
+		driver.findElement(By.cssSelector("#create_post > a")).click();
 		
 		return new EntryPageObject(driver);
 	}
@@ -28,6 +28,6 @@ public class HomePageObject {
 	}
 	
 	public String getStatusMessage() {
-		return driver.findElement(By.xpath("//*[@id=\"notification\"]/span")).getText();
+		return driver.findElement(By.cssSelector("#notification > span")).getText();
 	}
 }

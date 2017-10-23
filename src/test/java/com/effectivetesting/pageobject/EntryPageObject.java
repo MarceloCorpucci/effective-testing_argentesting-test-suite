@@ -16,14 +16,14 @@ public class EntryPageObject {
 	}
 	
 	public EntryPageObject createEntry(String title, String text) {
-		driver.findElement(By.id("title")).sendKeys(title);
-		driver.findElement(By.id("body")).sendKeys(text);
+		driver.findElement(By.cssSelector("#title")).sendKeys(title);
+		driver.findElement(By.cssSelector("#body")).sendKeys(text);
 		return this;
 	}
 	
 	public EntryPageObject addTag(String tag) {
 		Actions actions = new Actions(driver);
-		actions.moveToElement(driver.findElement(By.id("tags")));
+		actions.moveToElement(driver.findElement(By.cssSelector("#tags")));
 		actions.click();
 		actions.sendKeys(tag);
 		actions.build().perform();
@@ -32,30 +32,29 @@ public class EntryPageObject {
 	}
 	
 	public EntryPageObject setStatus(String status) {
-		Select statusDropDown = new Select(driver.findElement(By.id("status")));
+		Select statusDropDown = new Select(driver.findElement(By.cssSelector("#status")));
 		statusDropDown.selectByVisibleText(status);
 		return this;
 	}
 	
 	public EntryPageObject saveEntry() {
-		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[1]/form/div[5]/div/button")).click();
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
 		
 		WebDriverWait wait = (new WebDriverWait(driver, 15));
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("notification")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#notification")));
 		
 		return this;
 	}
 	
 	public EntryPageObject editEntry() {
-		driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/li[2]/a")).click();
+		driver.findElement(By.cssSelector("body > div.container > div:nth-child(1) > div.col-md-3 > li:nth-child(4) > a")).click();
 		return this;
 	}
 	
 	public String getResultMessage() {
-		return driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[1]/div/span")).getText();
+		return driver.findElement(By.cssSelector("#notification > span")).getText();
 	}
 
-	
 	public EntryListPageObject openEntryList() {
 		header = new HeaderSection(driver);
 		return header.goToBlog();
