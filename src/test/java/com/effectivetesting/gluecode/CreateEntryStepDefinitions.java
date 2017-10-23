@@ -1,6 +1,5 @@
 package com.effectivetesting.gluecode;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -48,24 +47,14 @@ public class CreateEntryStepDefinitions {
 
 	@Cuando("^le agrega el tag \"([^\"]*)\"$")
 	public void le_agrega_el_tag(String tag) throws Throwable {
-		entryPage.addTag(tag);
 	}
 
 	@Cuando("^la asigna la entrada como Draft$")
 	public void la_asigna_la_entrada_como_Draft() throws Throwable {
-		entryPage
-			.setStatus("Draft")
-			.saveEntry();
 	}
 
 	@Entonces("^la entrada no es visible por otros usuarios$")
 	public void la_entrada_no_es_visible_por_otros_usuarios() throws Throwable {
-	    String currentEntries = entryPage
-	    	.logOut()
-	    	.openEntryList()
-	    	.getEntries();
-	    
-		assertFalse(currentEntries.contains(this.title));
 	}
 	
 	@After("@crearEntrada")
